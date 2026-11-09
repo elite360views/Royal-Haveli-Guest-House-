@@ -1,10 +1,13 @@
+
 /* =========================================
    ROYAL HAVELI GUEST HOUSE
-   Premium Responsive Website Styles
+   Complete Responsive Website CSS
 ========================================= */
 
-/* RESET */
+/* 1. RESET & GLOBAL */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -14,15 +17,15 @@ html {
 }
 
 body {
-  margin: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
-  color: #292929;
-  background: #f7f4ee;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: #333;
+  background: #fff;
   line-height: 1.7;
   overflow-x: hidden;
 }
 
 img {
+  display: block;
   max-width: 100%;
 }
 
@@ -37,114 +40,139 @@ a {
 }
 
 .container {
-  width: min(1140px, 92%);
-  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+section {
+  padding: 85px 0;
+}
 
-/* =========================================
-   HEADER & NAVIGATION
-========================================= */
+.section-tag {
+  display: inline-block;
+  color: #b58a45;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+}
+
+/* 2. TOPBAR */
 .topbar {
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(13, 16, 21, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: #171717;
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 0;
 }
 
-.nav {
-  height: 78px;
+.topbar-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
 }
 
-.brand {
-  flex-shrink: 0;
+.topbar a {
+  color: #e5c58d;
+}
+
+/* 3. NAVIGATION */
+.nav {
+  background: #fff;
+  min-height: 78px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+}
+
+.nav .logo,
+.nav > a:first-child {
   display: flex;
   align-items: center;
 }
 
-.brand img {
-  height: 58px;
+.nav img {
   width: auto;
-  max-width: 180px;
+  max-width: 190px;
+  max-height: 65px;
   object-fit: contain;
-  mix-blend-mode: screen;
 }
 
 .nav nav {
   display: flex;
-  gap: 30px;
   align-items: center;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+  justify-content: flex-end;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 .nav nav a {
-  transition: color .25s ease;
-  white-space: nowrap;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .nav nav a:hover {
-  color: #f2c44f;
+  color: #b58a45;
 }
 
-.nav-call {
-  border: 1px solid #d9a928;
-  padding: 10px 16px;
-  border-radius: 2px;
-  color: #f2c44f !important;
+/* 4. BUTTONS */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 27px;
+  border-radius: 3px;
+  background: #b58a45;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid #b58a45;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-
-/* =========================================
-   SKIP LINK
-========================================= */
-
-.skip-link {
-  position: absolute;
-  top: -100px;
-  left: 10px;
-  z-index: 200;
-  padding: 10px 16px;
-  background: #d9a928;
-  color: #111;
+.btn:hover {
+  background: #916b31;
+  border-color: #916b31;
+  transform: translateY(-2px);
 }
 
-.skip-link:focus {
-  top: 10px;
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
 }
 
+.btn-outline:hover {
+  background: #fff;
+  color: #222;
+}
 
-/* =========================================
-   HERO SECTION
-========================================= */
-
+/* 5. HERO SECTION */
 .hero {
-  min-height: 760px;
+  min-height: 650px;
   position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   color: #fff;
+  background: #222;
   overflow: hidden;
-  isolation: isolate;
-}
-
-.hero > picture {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
 }
 
 .hero-bg {
@@ -153,316 +181,161 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  z-index: -2;
 }
 
-.hero-overlay {
+.hero::after {
+  content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
   background: linear-gradient(
-    to bottom,
-    rgba(10,14,22,.65),
-    rgba(10,14,22,.82)
+    90deg,
+    rgba(0,0,0,0.78),
+    rgba(0,0,0,0.40)
   );
+  z-index: -1;
 }
 
 .hero-content {
-  position: relative;
-  padding-top: 100px;
-  max-width: 1140px;
-}
-
-.eyebrow {
-  font-size: 12px;
-  letter-spacing: .28em;
-  font-weight: 700;
-  color: #f2c44f;
-  margin: 0 0 12px;
-}
-
-.eyebrow.dark {
-  color: #9c7217;
+  max-width: 700px;
+  padding: 90px 0;
 }
 
 .hero h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(60px, 8vw, 100px);
-  line-height: .9;
-  margin: 0 0 28px;
-  font-weight: 600;
-  letter-spacing: -.02em;
-}
-
-.hero h1 span {
-  font-size: .58em;
-  letter-spacing: .03em;
-}
-
-.hero-text {
-  max-width: 580px;
-  font-size: 17px;
-  color: #eee;
-  text-shadow: 0 2px 6px rgba(0,0,0,.6);
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-
-/* =========================================
-   BUTTONS
-========================================= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
-  padding: 0 23px;
-  border-radius: 3px;
+  font-size: clamp(36px, 5vw, 62px);
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    background .25s ease,
-    color .25s ease,
-    transform .25s ease,
-    border-color .25s ease;
+  margin-bottom: 22px;
+  line-height: 1.15;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
+.hero p {
+  font-size: 17px;
+  max-width: 600px;
+  margin-bottom: 30px;
+  color: #f1f1f1;
 }
 
-.btn:active {
-  transform: translateY(0);
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
-.btn.gold {
-  background: #d9a928;
-  color: #111;
-  border: 1px solid #d9a928;
-}
-
-.btn.gold:hover {
-  background: #f2c44f;
-  border-color: #f2c44f;
-}
-
-.btn.outline {
-  background: rgba(10,14,22,.55);
-  border: 2px solid rgba(255,255,255,.85);
-  color: #fff;
-}
-
-.btn.outline:hover {
+/* 6. ABOUT SECTION */
+.about-section {
   background: #fff;
-  color: #111;
 }
 
-.dark-text {
-  color: #111 !important;
-}
-
-.dark-outline {
-  color: #111 !important;
-  border-color: #777 !important;
-  background: transparent !important;
-}
-
-.dark-outline:hover {
-  background: #111 !important;
-  color: #fff !important;
-}
-
-
-/* =========================================
-   GENERAL SECTIONS
-========================================= */
-
-.section {
-  padding: 100px 0;
-}
-
-.center {
+.about-content {
+  max-width: 850px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.intro {
-  background: #f7f4ee;
+.about-content h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  color: #222;
+  margin-bottom: 22px;
 }
 
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 70px;
-  align-items: center;
-}
-
-.two-col h2,
-.section h2,
-.cta h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(42px, 5vw, 64px);
-  line-height: 1;
-  margin: 0 0 22px;
-  font-weight: 600;
-}
-
-.two-col p {
-  color: #555;
-}
-
-
-/* =========================================
-   CONTACT DETAILS
-========================================= */
-
-.contact-box {
-  margin-top: 32px;
-  border-top: 1px solid #d7d1c6;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  padding-top: 22px;
-}
-
-.contact-box div {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.contact-box strong {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-}
-
-.contact-box span {
-  font-size: 13px;
+.about-content p {
   color: #666;
-  overflow-wrap: anywhere;
+  font-size: 15px;
+  margin-bottom: 15px;
 }
 
-.contact-box a {
-  color: #8b6817;
+/* 7. RECEPTION / FEATURE SECTION */
+.feature-section {
+  background: #f8f6f2;
 }
-
-
-/* =========================================
-   RECEPTION FEATURE CARD
-========================================= */
 
 .feature-card {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.feature-card picture {
+  display: block;
+  width: 100%;
   overflow: hidden;
-  border-radius: 3px;
 }
 
 .feature-card img {
-  display: block;
   width: 100%;
   height: 470px;
   object-fit: cover;
-  transition: transform .5s ease;
+  border-radius: 4px;
 }
 
-.feature-card:hover img {
-  transform: scale(1.025);
+.feature-content h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 20px;
+  color: #222;
 }
 
-.feature-caption {
-  position: absolute;
-  left: 25px;
-  bottom: 25px;
-  background: rgba(10,12,15,.88);
-  padding: 14px 20px;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
+.feature-content p {
+  color: #666;
+  margin-bottom: 18px;
 }
 
-.feature-caption span {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-  color: #f2c44f;
+/* 8. FEATURES */
+.features-section {
+  background: #fff;
 }
 
-.feature-caption small {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: .16em;
+.section-heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 45px;
 }
 
-
-/* =========================================
-   WHY ROYAL HAVELI
-========================================= */
-
-.dark-section {
-  background: #11151b;
-  color: #fff;
+.section-heading h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  color: #222;
+  margin-bottom: 15px;
 }
 
-.dark-section h2 {
-  margin-bottom: 55px;
+.section-heading p {
+  color: #777;
+  font-size: 15px;
 }
 
-.features {
+.features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 25px;
 }
 
-.feature {
-  padding: 34px 25px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.03);
-  transition:
-    transform .3s ease,
-    border-color .3s ease,
-    background .3s ease;
+.feature-item {
+  text-align: center;
+  padding: 30px 22px;
+  background: #faf9f6;
+  border: 1px solid #eee9df;
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.feature:hover {
-  transform: translateY(-6px);
-  border-color: rgba(242,196,79,.5);
-  background: rgba(255,255,255,.06);
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
 }
 
-.icon {
-  font-size: 31px;
-  color: #f2c44f;
-  margin-bottom: 12px;
+.feature-item h3 {
+  font-size: 19px;
+  color: #222;
+  margin-bottom: 10px;
 }
 
-.feature h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  margin: 0 0 8px;
+.feature-item p {
+  color: #777;
+  font-size: 14px;
 }
 
-.feature p {
-  color: #c5c8cc;
-  font-size: 13px;
-  margin: 0;
-}
-
-
-/* =========================================
-   PHOTO GALLERY
-========================================= */
-
+/* 9. GALLERY */
 .gallery-section {
-  background: #fff;
+  background: #f8f6f2;
 }
 
 .gallery {
@@ -473,18 +346,26 @@ a {
 }
 
 .gallery figure {
-  margin: 0;
-  background: #111;
   position: relative;
+  margin: 0;
+  height: 300px;
+  min-height: 0;
+  background: #222;
   overflow: hidden;
-  min-height: 300px;
-  border-radius: 3px;
+  border-radius: 4px;
+}
+
+.gallery figure:first-child {
+  grid-row: span 2;
+  height: 618px;
 }
 
 .gallery figure picture {
   position: absolute;
   inset: 0;
   display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .gallery img {
@@ -492,7 +373,7 @@ a {
   height: 100%;
   display: block;
   object-fit: cover;
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 .gallery figure:hover img {
@@ -509,211 +390,164 @@ a {
   color: #fff;
   background: linear-gradient(
     transparent,
-    rgba(0,0,0,.85)
+    rgba(0,0,0,0.85)
   );
   padding: 40px 18px 16px;
   font-weight: 600;
   pointer-events: none;
 }
 
-
-/* =========================================
-   LOCATION & MAP
-========================================= */
-
+/* 10. LOCATION / MAP */
 .location-section {
-  background: #ebe7df;
+  background: #fff;
 }
 
-.location-card {
+.location-content {
   display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap: 50px;
-  align-items: stretch;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
-.location-card p {
-  color: #5f5b55;
+.location-content h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 20px;
+  color: #222;
 }
 
-.location-actions {
+.location-content p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.location-map {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  border-radius: 4px;
+}
+
+/* 11. CONTACT SECTION */
+.contact-section {
+  background: #f8f6f2;
+}
+
+.contact-content {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.contact-content h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.contact-content p {
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.contact-buttons {
   display: flex;
-  gap: 12px;
+  justify-content: center;
   flex-wrap: wrap;
+  gap: 15px;
   margin-top: 25px;
 }
 
-.map-embed {
-  min-height: 320px;
-  height: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #ddd;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-}
-
-.map-embed iframe {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  border: 0;
-  display: block;
-}
-
-
-/* =========================================
-   BOOKING CTA
-========================================= */
-
-.cta {
-  background: linear-gradient(
-    135deg,
-    #161a20,
-    #272c34
-  );
+/* 12. CTA SECTION */
+.cta-section {
+  background: #201d19;
   color: #fff;
-  padding: 90px 0;
+  text-align: center;
 }
 
-.cta p:not(.eyebrow) {
-  color: #cdd0d4;
+.cta-section h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 15px;
 }
 
-.cta h2 {
-  margin-bottom: 10px;
+.cta-section p {
+  color: #ddd;
+  margin-bottom: 25px;
 }
 
-
-/* =========================================
-   FOOTER
-========================================= */
-
+/* 13. FOOTER */
 footer {
-  background: #0b0d10;
-  color: #c8c8c8;
-  padding: 35px 0;
+  background: #151515;
+  color: #ccc;
+  padding: 50px 0 20px;
 }
 
 .footer-inner {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 25px;
-  font-size: 11px;
-}
-
-.footer-inner > div:first-child {
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-}
-
-.footer-inner strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 25px;
-  color: #f2c44f;
-  line-height: 1;
-}
-
-.footer-inner span {
-  font-size: 10px;
-  letter-spacing: .15em;
-}
-
-.footer-inner p {
-  margin: 0;
-}
-
-.footer-links {
-  display: flex;
-  gap: 16px;
+  align-items: flex-start;
   flex-wrap: wrap;
+  gap: 30px;
 }
 
-.footer-links a {
-  transition: color .2s ease;
+.footer-inner h3 {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.footer-links a:hover {
-  color: #f2c44f;
+.footer-inner p,
+.footer-inner a {
+  font-size: 14px;
+  color: #bbb;
 }
 
-
-/* =========================================
-   FOCUS & ACCESSIBILITY
-========================================= */
-
-a:focus-visible {
-  outline: 3px solid #d9a928;
-  outline-offset: 4px;
+.footer-inner a:hover {
+  color: #d5ad6d;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 35px;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #888;
 }
 
-
-/* =========================================
-   TABLET RESPONSIVENESS
-========================================= */
-
+/* 14. TABLET RESPONSIVE */
 @media (max-width: 800px) {
 
-  .nav {
-    height: 70px;
-    gap: 12px;
+  section {
+    padding: 65px 0;
   }
 
-  .brand img {
-    height: 48px;
-    max-width: 125px;
+  .nav {
+    padding: 12px 0;
+    min-height: 70px;
   }
 
   .nav nav {
-    flex: 1;
-    min-width: 0;
-    justify-content: flex-end;
-    gap: 15px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    font-size: 10px;
+    gap: 14px;
   }
 
-  .nav nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-call {
-    padding: 8px 11px;
+  .nav nav a {
+    font-size: 13px;
   }
 
   .hero {
-    min-height: 700px;
+    min-height: 570px;
   }
 
-  .hero h1 {
-    font-size: 68px;
-  }
-
-  .two-col,
-  .location-card {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  .feature-card {
+    gap: 30px;
   }
 
   .feature-card img {
-    height: 390px;
+    height: 380px;
   }
 
-  .features {
-    grid-template-columns: 1fr;
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .gallery {
@@ -722,99 +556,99 @@ a:focus-visible {
 
   .gallery figure:first-child {
     grid-column: 1 / -1;
+    grid-row: auto;
+    height: 350px;
   }
 
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
+  .gallery figure {
+    height: 270px;
   }
 
-  .contact-box {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 75px 0;
-  }
-
-  .map-embed {
-    height: 320px;
+  .location-content {
+    gap: 25px;
   }
 }
 
-
-/* =========================================
-   MOBILE RESPONSIVENESS
-========================================= */
-
+/* 15. MOBILE RESPONSIVE */
 @media (max-width: 480px) {
 
-  html {
-    scroll-padding-top: 76px;
+  .container {
+    width: 92%;
+  }
+
+  section {
+    padding: 55px 0;
+  }
+
+  .topbar {
+    font-size: 11px;
+  }
+
+  .topbar-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
   }
 
   .nav {
-    height: 66px;
-    gap: 8px;
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 10px;
   }
 
-  .brand img {
-    height: 43px;
-    max-width: 105px;
+  .nav img {
+    max-height: 48px;
+    max-width: 160px;
   }
 
   .nav nav {
-    gap: 12px;
-    font-size: 9px;
-    letter-spacing: .04em;
+    width: 100%;
+    justify-content: center;
+    gap: 10px 17px;
   }
 
-  .nav-call {
-    padding: 7px 9px;
-    font-size: 9px;
+  .nav nav a {
+    font-size: 12px;
   }
 
   .hero {
-    min-height: 680px;
+    min-height: 520px;
   }
 
   .hero-content {
-    padding-top: 90px;
+    padding: 70px 0;
   }
 
   .hero h1 {
-    font-size: clamp(48px, 13vw, 57px);
-    line-height: .95;
+    font-size: 36px;
   }
 
-  .hero-text {
+  .hero p {
     font-size: 14px;
-    max-width: 100%;
   }
 
-  .hero-actions,
-  .location-actions {
+  .hero-buttons {
     flex-direction: column;
-    gap: 12px;
+    align-items: stretch;
   }
 
   .btn {
     width: 100%;
-    min-height: 50px;
+    padding: 13px 18px;
   }
 
-  .section {
-    padding: 65px 0;
-  }
-
-  .two-col h2,
-  .section h2,
-  .cta h2 {
-    font-size: 43px;
+  .feature-card {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
 
   .feature-card img {
-    height: 330px;
+    height: 280px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .gallery {
@@ -822,68 +656,53 @@ a:focus-visible {
     gap: 15px;
   }
 
+  .gallery figure,
   .gallery figure:first-child {
     grid-column: auto;
+    grid-row: auto;
+    height: 260px;
   }
 
-  .gallery figure {
-    min-height: 260px;
+  .gallery figure:first-child {
+    height: 280px;
   }
 
-  .gallery img {
-    min-height: 260px;
+  .location-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
   }
 
-  .contact-box {
-    gap: 18px;
-  }
-
-  .location-card {
-    gap: 30px;
-  }
-
-  .map-embed,
-  .map-embed iframe {
-    min-height: 300px;
+  .location-map {
     height: 300px;
   }
 
-  .cta {
-    padding: 70px 0;
+  .contact-buttons {
+    flex-direction: column;
   }
 
   .footer-inner {
-    gap: 18px;
+    flex-direction: column;
+    gap: 25px;
   }
-
-  .footer-links {
-    justify-content: center;
-  }
-
 }
 
+/* 16. ACCESSIBILITY */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #b58a45;
+  outline-offset: 4px;
+}
 
-/* =========================================
-   SMALL SCREEN OPTIMIZATION
-========================================= */
-
-@media (max-width: 360px) {
-
-  .brand img {
-    max-width: 90px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  .nav nav {
-    gap: 9px;
-    font-size: 8px;
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
-
-  .hero h1 {
-    font-size: 47px;
-  }
-
-  .eyebrow {
-    font-size: 10px;
-  }
-
-    }
+   }
+   
